@@ -58,6 +58,20 @@ app.post('/addaccount', (req,res)=>{
     })
 })
 
+// delete data
+app.get('/delaccount/:id', (req,res)=>{
+    const id = req.params.id;
+    const sqldelete = "DELETE FROM Account Where AccountID = ?";
+    db.query(sqldelete,[id],(err,ketqua)=>{
+        if(err){
+            console.error('Loi khong xoa duoc du lieu',err);
+        }
+        else{
+            res.redirect('/');
+        }
+    })
+})
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

@@ -23,6 +23,7 @@
                     <th>Department ID</th>
                     <th>Position ID</th>
                     <th>Create Date</th>
+                    <th></th>
                 </tr>
             </thead>
             <% account.forEach(account => { %>
@@ -34,6 +35,7 @@
                     <td><%= account.DepartmentID   %></td>
                     <td><%= account.PositionID     %></td>
                     <td><%= account.CreateDate     %></td>
+                    <td><a href="/delaccount/<%= account.AccountID%>"> Xoa</a></td>
             </tbody>
             <% }); %>
         </table>
