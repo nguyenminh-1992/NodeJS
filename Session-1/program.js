@@ -1,0 +1,11 @@
+"use strict";
+exports.__esModule = true;
+var person_1 = require("./person");
+var person1 = new person_1.Person(1, "Minh");
+var person2 = new person_1.Person(2, "Minh");
+var person3 = new person_1.Person(3, "Minh");
+var person4 = new person_1.Person(4, "Minh");
+var person5 = new person_1.Person(5, "Minh");
+var person6 = new person_1.Person(6, "Minh");
+console.log(person2.name);
+person5.study();

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sach Account</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+</head>
+<body>
+    <h2> Danh sach tai khoan</h2>
+
+    <a href="/addaccount"> Them tai khoan</a>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Account ID</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Fullname</th>
+                    <th>Department ID</th>
+                    <th>Position ID</th>
+                    <th>Create Date</th>
+                </tr>
+            </thead>
+            <% account.forEach(account => { %>
+            <tbody>
+                    <td><%= account.AccountID      %></td>
+                    <td><%= account.Email          %></td>
+                    <td><%= account.Username       %></td>
+                    <td><%= account.Fullname       %></td>
+                    <td><%= account.DepartmentID   %></td>
+                    <td><%= account.PositionID     %></td>
+                    <td><%= account.CreateDate     %></td>
+            </tbody>
+            <% }); %>
+        </table>
+    </div>
+    
+</body>
+</html>
