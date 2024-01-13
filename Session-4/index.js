@@ -72,6 +72,34 @@ app.get('/delaccount/:id', (req,res)=>{
     })
 })
 
+//update data
+app.get('/updateaccount/:id', (req,res)=>{
+    const id = req.params.id;
+    const sqlselect = "SELECT * FROM Account WHERE AccountID = ?";
+    db.query(sqlselect,[id],(err,ketqua)=>{
+        if(err){
+            console.error('Loi khong hien thi duoc du lieu',err);
+        }
+        else{
+            res.render('update',{account : ketqua[0]});
+        }
+    })
+})
+
+app.post('/update/:id', (req,res)=>{
+    const id = req.params.id;
+    const {email,username} = req.body;
+    const sqlupdate = "UPDATE `Account` SET Email = ?, Username=? WHERE AccountID=?;";
+    db.query(sqlupdate,[email,username,id],(err,ketqua)=>{
+        if(err){
+            console.error('Loi khong sua duoc du lieu',err);
+        }
+        else{
+            res.redirect('/');
+        }
+    })
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
