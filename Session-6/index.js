@@ -39,7 +39,34 @@ app.post('/signup', (req, res) => {
             res.redirect('/');
         }
     })
-  })
+})
+
+//sign in
+app.get('/signin', (req, res) => {
+    res.render('signin')
+})
+app.post('/signin', (req, res) => {
+    const {username, password} = req.body;
+    const sqlsignin = "SELECT * FROM book.users WHERE username = ?"
+    db.query(sqlsignin,[username],(err,ketqua)=>{
+        if(err){
+            console.error('Loi khong them duoc du lieu',err);
+        }
+        if (ketqua.length>0){
+            const passwordcrypt = ketqua[0].password;
+            const sosanh = bcrypt.compareSync(password,passwordcrypt);
+            if(sosanh){
+                res.redirect('/')
+            }
+            else{
+                res.status(404).send("Khong dung mat khau")
+            }
+        }
+        else{
+            res.status(404).send("Khong co user nay")
+        }
+});
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
